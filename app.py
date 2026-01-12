@@ -1,5 +1,6 @@
 # Import required libraries
 from flask import Flask, request, jsonify
+import os
 from flask_cors import CORS
 
 # Initialize Flask application
@@ -35,5 +36,6 @@ def calculate():
     return jsonify(result)
 
 # Start the back-end service
-if __name__ == '__main__':
-    app.run(debug=True)  # debug=True: auto-restart after code modification for easy testing
+if __name__ == "__main__":
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
